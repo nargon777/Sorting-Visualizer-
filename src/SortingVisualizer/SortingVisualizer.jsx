@@ -30,14 +30,8 @@ export default class SortingVisualizer extends React.Component {
     }
 
     mergeSort() {
-        const animations = sortingAlgorithms.mergeSort(this.state.array);
-        const newAnimations = [];
-        for (const animation of animations) {
-            newAnimations.push(animation.comparison);
-            newAnimations.push(animation.comparison);
-            newAnimations.push(animation.swap);
-        }
-        for (let i = 0; i < newAnimations.length; i++) {
+        const animations = getMergeSortAnimations(this.state.array);
+        for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
             const isColorChange = i % 3 !== 2;
             if (isColorChange) {
@@ -48,29 +42,31 @@ export default class SortingVisualizer extends React.Component {
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
-                }, i * 3);
+                }, i * ANIMATION_SPEED_MS);
             } else {
                 setTimeout(() => {
                     const [barOneIdx, newHeight] = newAnimations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
-                }, i * 3);
+                }, i * ANIMATION_SPEED_MS);
             }
         }
     }
 
     quickSort () {
-
+        // not done yet
     }
 
     heapSort () {
-
+        // not done yet
     }
 
     bubleSort () {
-
+        // not done yet
     }
 
+    // This method will only work is the sorting algorithms actually return the sorted arrays;
+    // if they return the animations (which they do now), then this method will not work.
     testSortingAlgorithms() {
         for (let i = 0; i < 100; i++) {
             const array = [];
@@ -106,6 +102,7 @@ export default class SortingVisualizer extends React.Component {
 }
 
 function randomIntFromInterval(min, max) {
+    // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
