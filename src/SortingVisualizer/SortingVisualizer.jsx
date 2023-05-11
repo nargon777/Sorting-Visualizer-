@@ -1,5 +1,5 @@
 import React from 'react';
-import * as sortingAlgorithms from '../sortingAlgorithms/sortingAlgorithms.js';
+import {getMergeSortAnimations} from '../sortingAlgorithms/sortingAlgorithms.js';
 import './SortingVisualizer.css';
 
 // Change this value to affect speed of animations.
