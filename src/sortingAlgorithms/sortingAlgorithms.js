@@ -54,7 +54,7 @@ function doMerge(
         animations.push([i, i]);
         // This overwrites the value at index k in the original array with the value at i in 
         // the auxilliary array
-        animations.push([k, auxiallaryArray[i]]);
+        animations.push([k, auxiliaryArray[i]]);
         mainArray[k++] = auxiliaryArray[i++];
     }
     while (j <= endIdx) {
